@@ -25,7 +25,7 @@ module.exports = function(app, config) {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
     app.use(express.static(path.join(config.rootPath, 'client')));
-
+    app.use(express.static(config.imageRepo));
     app.use(session({secret: 'ass',
                     resave:true,
                     saveUninitialized:true,

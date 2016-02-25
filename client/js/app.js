@@ -13,6 +13,7 @@ angular
     'ui.router',
     'ui.bootstrap',
     'angular-loading-bar',
+    'ngFileUpload'
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
     
@@ -96,7 +97,20 @@ angular
       .state('dashboard.form',{
         templateUrl:'templates/form.html',
         url:'/form'
-    })
+    }) .state('dashboard.product',{
+            templateUrl:'templates/add-product/add-product.html',
+            url:'/product',
+            controller:'ManageProductCtrl',
+            resolve: {
+                loadMyFile:function($ocLazyLoad) {
+                    return  $ocLazyLoad.load({
+                            name:'sbAdminApp',
+                            files:['js/controllers/ManageProductController.js']
+                        })
+                }
+            }
+        })
+
       .state('dashboard.blank',{
         templateUrl:'templates/pages/blank.html',
         url:'/blank'

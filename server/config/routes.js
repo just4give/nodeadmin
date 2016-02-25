@@ -3,6 +3,7 @@
  */
 
 var routes = require('../routes/indexRouter');
+var photoRoutes = require('../routes/photoRouter');
 
 
 
@@ -16,6 +17,7 @@ module.exports = function(app) {
         next();
     });
     app.use('/', routes);
+    app.use('/api/photo', photoRoutes);
 
 
 
